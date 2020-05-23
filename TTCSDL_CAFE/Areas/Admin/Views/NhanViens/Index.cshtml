@@ -5,54 +5,102 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<br />
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ViTri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LuongCoBan)
-        </th>
-        <th></th>
-    </tr>
+<div class="card-header">
+    <a class="addnv card-title ">@Html.ActionLink("Add Employees", "Create")</a>
+</div>
+@using (Html.BeginForm())
+{
+    <nav class="navbar navbar-expand-lg navbar-dark blue lighten-2 mb-4">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ViTri)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LuongCoBan)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNV }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNV }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNV })
-        </td>
-    </tr>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="form-inline mr-auto">
+                @Html.TextBox("searching")
+
+                <button type="submit" class="btn btn-primary btn-success btn-sm">Search</button>
+            </form>
+
+        </div>
+        <!-- Collapsible content -->
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Navbar</a>
+
+    </nav>
+    @*<p>
+            Search by Name @Html.TextBox("searching",new { @class = "form-control" })
+        </p>*@
 }
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class=" text-primary">
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HoTen)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgaySinh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SDT)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ViTri)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LuongCoBan)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+
+                @foreach (var item in Model)
+                 {
+            <tr>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.ViTri)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.LuongCoBan)
+                </td>
+                
+                 <td>
+                    <button class="btn btn-outline-primary btn-sm">@Html.ActionLink("Edit", "Edit", new { id = item.MaNV })</button>
+                </td>
+                 <td>
+                   <button class="btn btn-outline-primary btn-sm">@Html.ActionLink("Details", "Details", new { id = item.MaNV }) </button>
+
+                   
+                   
+               </td>
+                 <td>
+                   <button class="btn btn-outline-primary btn-sm">@Html.ActionLink("Delete", "Delete", new { id = item.MaNV }) </button>
+
+               </td>
+            </tr>
+                 }
+
 
 </table>
+    </div>
+</div>
+   
+

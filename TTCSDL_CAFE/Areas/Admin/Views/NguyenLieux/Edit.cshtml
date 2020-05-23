@@ -5,12 +5,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<br />
+<br />
+<br />
+<div class="card-header">
+    <h5 class="card-title">Thông tin nguyên liệu</h5>
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>NguyenLieu</h4>
         <hr />

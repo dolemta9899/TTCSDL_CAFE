@@ -5,39 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>NguyenLieu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenNL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenNL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DVT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DVT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NhaCungCap)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NhaCungCap)
-        </dd>
-
-    </dl>
+<br />
+<br />
+<br />
+<div class="card-header">
+    <h5 class="card-title">Thông tin nguyên liệu</h5>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNL }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+<div class="card-body">
+    <form>
+        <div class="row">
+            <div class="col-md-10 ">
+                <div class="form-group">
+                    <label>@Html.DisplayNameFor(model => model.TenNL)</label>
+                    <br />
+                    <label> @Html.DisplayFor(model => model.TenNL)</label>
+
+
+                </div>
+            </div>
+            <div class="col-md-10 ">
+                <div class="form-group">
+                    <label>  @Html.DisplayNameFor(model => model.DVT))</label>
+                    <br />
+                    <label> @Html.DisplayFor(model => model.DVT)</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 ">
+                <div class="form-group">
+                    <label> @Html.DisplayNameFor(model => model.NhaCungCap)</label>
+                    <br />
+                    <label>@Html.DisplayFor(model => model.NhaCungCap)</label>
+
+
+                </div>
+            </div>
+           
+        </div>
+        <div>
+            <button class="btn btn-outline-success">@Html.ActionLink("Back to List", "Index")</button>
+
+            <button class=" btn btn-outline-warning">@Html.ActionLink("Edit", "Edit", new { id = Model.MaNL })</button>
+        </div>
+</form>
+</div>

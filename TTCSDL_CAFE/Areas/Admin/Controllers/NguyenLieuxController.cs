@@ -15,6 +15,22 @@ namespace TTCSDL_CAFE.Areas.Admin.Controllers
         private CafeDbContext db = new CafeDbContext();
 
         // GET: Admin/NguyenLieux
+        [HttpPost]
+        public ActionResult Index(string searchingg)
+        {
+
+            var links = from l in db.NguyenLieux // lấy toàn bộ liên kết
+                        select l;
+
+            if (!String.IsNullOrEmpty(searchingg)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.TenNL.Contains(searchingg)); //lọc theo chuỗi tìm kiếm
+            }
+
+            return View(links); //trả về kết quả
+
+        }
+        [HttpGet]
         public ActionResult Index()
         {
             return View(db.NguyenLieux.ToList());

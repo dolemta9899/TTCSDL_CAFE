@@ -14,11 +14,33 @@ namespace TTCSDL_CAFE.Areas.Admin.Controllers
     {
         private CafeDbContext db = new CafeDbContext();
 
-        // GET: Admin/NhanViens
+        [HttpPost]
+        public ActionResult Index(string searching)
+        {
+
+            var links = from l in db.NhanViens // lấy toàn bộ liên kết
+                        select l;
+
+            if (!String.IsNullOrEmpty(searching)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                links = links.Where(s => s.HoTen.Contains(searching)); //lọc theo chuỗi tìm kiếm
+            }
+
+            return View(links); //trả về kết quả
+
+        }
+        [HttpGet]
         public ActionResult Index()
         {
             return View(db.NhanViens.ToList());
         }
+
+        // GET: Admin/NhanViens
+
+        //public ActionResult Index()
+        //{
+        //    return View(db.NhanViens.ToList());
+        //}
 
         // GET: Admin/NhanViens/Details/5
         public ActionResult Details(string id)
